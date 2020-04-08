@@ -6,7 +6,7 @@ Template File: sources-sink-01.tmpl.java
 /*
 * Modified by: Miltiadis Siavvas
 */
-package com.miltos.security.vulnerable;
+package com.miltos.security.clean;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.Vector;
 import java.util.stream.Stream;
 
-public class CWE78_OS_Command_Injection_Resource_Handling_Vuln {
+public class CWE78_OS_Command_Injection_Resource_Handling_Clean {
 	
 	final static String DATA = new File("C:\\Users\\siavvasm.ITI-THERMI.000\\Desktop\\input_data.txt").getAbsolutePath();
 
@@ -94,17 +94,10 @@ public class CWE78_OS_Command_Injection_Resource_Handling_Vuln {
 		Iterator<String> parameterIt = parameters.iterator();
 		
 		String parameter = "";
-		
-		Collection c1 = new Vector();
-		Collection c2 = new Vector();
 
 		
 		// 3. Execute the command for each parameter
 		while(parameterIt.hasNext()) {
-			
-			Object obj = new Object();
-			String str = new String();
-			String str2 = new String();
 			
 			// Read the parameter
 			parameter = parameterIt.next();
@@ -116,6 +109,24 @@ public class CWE78_OS_Command_Injection_Resource_Handling_Vuln {
 
 			//TODO: Remove this print
 			System.out.println(parameter);
+		}
+		
+		try {
+			if (br != null) {
+				br.close();
+			}
+		} catch (IOException e) {
+			System.out.println("Error closing the BufferedReader!");
+			System.out.println(e.getMessage());
+		}
+		
+		try {
+			if (fr != null) {
+				fr.close();
+			}
+		} catch (IOException e) {
+			System.out.println("Error closing the FileReader!");
+			System.out.println(e.getMessage());
 		}
 		
 	}
