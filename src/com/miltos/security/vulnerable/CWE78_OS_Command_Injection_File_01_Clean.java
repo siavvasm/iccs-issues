@@ -88,8 +88,8 @@ public class CWE78_OS_Command_Injection_File_01_Vuln {
 		final BufferedReader br = new BufferedReader(fr);
 		
 		// 2. Read the user defined parameters from the desired file
-		Stream<String> parameters = br.lines();
-		Iterator<String> parameterIt = parameters.iterator();
+		final Stream<String> parameters = br.lines();
+		final Iterator<String> parameterIt = parameters.iterator();
 		
 		String parameter = "";
 		
